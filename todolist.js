@@ -8,7 +8,7 @@ const submitBtn = document.querySelector(".submit")
 
         let isEditing = false   
         let currentEditingItem = null
-        console.log(new Date().getTime())
+        
         document.addEventListener("DOMContentLoaded", () => {
             const savedItems = JSON.parse(localStorage.getItem("groceryList")) || [];
             savedItems.forEach(item => {
@@ -26,23 +26,11 @@ const submitBtn = document.querySelector(".submit")
             if(inputEl.value !== "") {
                 if(isEditing) {
                     currentEditingItem.textContent = inputEl.value
-                    isEditing = false
-                    currentEditingItem = null
-                    submitBtn.textContent = "Submit"
-                    history.textContent = `Item Updated`
-                    history.classList.add("editHistory")
-                    setTimeout(() => {
-                        history.classList.remove("editHistory");
-                        history.textContent = ""
-                    }, 1500);
+                    setBackToDefault()
+                    displayHistory("Item Updated", "editHistory")
                 } else {
                     appendList(inputEl.value)
-                    history.textContent = `${inputEl.value} Is Added To The List`
-                    history.classList.add("addHistory")
-                    setTimeout(() => {
-                        history.classList.remove("addHistory");
-                        history.textContent = ""
-                    }, 1500);
+                    displayHistory(`${inputEl.value} Is Added To The List`, "addHistory")
                 }
                 saveList()
             }
@@ -53,6 +41,7 @@ const submitBtn = document.querySelector(".submit")
         clearBtn.addEventListener("click", event => {
             groceries.textContent = ""
             clearBtn.classList.remove("display")
+            setBackToDefault()
             localStorage.removeItem("groceryList")
         })
 
@@ -67,12 +56,8 @@ const submitBtn = document.querySelector(".submit")
                 if (groceries.getElementsByTagName("li").length === 0) {
                     clearBtn.classList.remove("display");
                 }
-                history.classList.add("deleteHistory")
-                history.textContent = "Item Removed"
-                setTimeout(() => {
-                    history.classList.remove("deleteHistory");
-                    history.textContent = ""; // Optionally, clear the text content
-                }, 1500);
+                setBackToDefault()
+                displayHistory("Item Removed", "deleteHistory")
             });
 
             const editBtn = document.createElement("button");
@@ -94,4 +79,21 @@ const submitBtn = document.querySelector(".submit")
             groceries.appendChild(listItem);
 
             clearBtn.classList.add("display")            
+        }
+
+        function displayHistory(text, action) {
+            history.textContent = text
+            history.classList.add(action)
+
+            setTimeout(() => {
+                history.classList.remove(action);
+                history.textContent = ""
+            }, 1000);
+        }
+
+        function setBackToDefault() {
+            inputEl.value = ""
+            isEditing = false
+            currentEditingItem = null
+            submitBtn.textContent = "Submit"
         }
