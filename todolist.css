@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #F1F5F8;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    background-color: #FFFFFF;
+    width: 350px;
+    box-shadow: 0 2px 5px rgb(206, 206, 206);
+}
+.title {
+    color: #002B4B;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px 0 15px 0;
+}
+.history {
+    text-align: center;
+    margin: 20px 40px 5px 40px;
+    font-size: 12px;
+    visibility: hidden;
+    font-family: monospace;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+input[type="text"] {
+    width: 250px;
+    padding: 3px 5px;
+    border: none;
+    background-color: #F1F5F8;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.submit {
+    background-color: #A5D5F9;
+    text-align: center;
+    padding: 4px 12px;
+    width: 65px;
+    border: none;
+    border-radius: 5px;
+    margin-left: -5px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+.submit:hover {
+    background-color: #74bef7;
+}
+input[type="text"]:focus {
+    background-color: #F1F5F8;
+    outline: none;
+}
+.last {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.groceries {
+    text-align: center;
+    list-style: none;
+}
+.groceries li {
+    display: grid;
+    grid-template-columns: 1fr 65px 65px;
+    margin: 5px 15px;
+    text-align: start;
+    padding-left: 15px;
+    color: #153A54;
+}
+.groceries li button{
+    margin: 5px;
+    padding: 3px;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+.editBtn {
+    background-color: #88D66C;
+}
+.deleteBtn {
+    background-color: #FF7777;
+}
+.editBtn:hover {
+    background-color: #75da50;
+}
+.deleteBtn:hover {
+    background-color: #fd5050;
+}
+.clear {
+    visibility: hidden;
+    margin: 10px 0 15px 0;
+    color: red;
+    border: none;
+    border-radius: 3px;
+    letter-spacing: 3px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    font-family: monospace;
+    padding: 3px 10px;
+    transition: 0.15s;
+}
+.clear:hover {
+    background-color: rgb(231, 231, 231);
+}
+.display {
+    visibility: visible;
+}
+.deleteHistory {
+    visibility: visible;
+    color: red;
+    background-color: #FF7777;
+}
+.addHistory {
+    visibility: visible;
+    color: green;
+    background-color: #88D66C;
+}
+.editHistory {
+    visibility: visible;
+    color: blue;
+    background-color: #A5D5F9;
+}
